@@ -80,7 +80,7 @@ function updateUser(id){
         },
         success: function(data){
             console.log('success');
-            // $('#info').uppend(data)
+            $('#info').append();
         },
         error: function(data){
             console.log('error');

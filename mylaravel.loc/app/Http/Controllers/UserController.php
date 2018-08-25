@@ -41,7 +41,7 @@ class UserController extends Controller
        $user_del = User::find($id);
        $user_del->delete();// найти в доках и изучить!
        $message = 'user '.$id.' was delete';
-
+       
        return $message;
     }
 

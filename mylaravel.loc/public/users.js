@@ -72,7 +72,7 @@ function updateUser(id){
         },
         url:'http://127.0.0.1:8000/editUser',
         data: {
-            //ассоциативный массив или lson
+            //ассоциативный массив или json
             id: id,
             name: name,
             email: email,

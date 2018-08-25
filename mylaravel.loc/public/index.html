@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <title>Blog Laravel</title>
+    <!-- //Проверка подключения библиотеки -->
+    <!-- <script type="text/JavaScript">
+        if (window.jquery)  alert("Подключен");
+        else alert ("Не подключен");
+    </script> -->
+<!-- *********************************************************************** -->
+  </head>
+    <body>
+        <!-- Текст приветствия в блоге! -->
+        <div id="hello" class="text-center"></div>
+        <div class="text-center">
+            <!-- Кнопка логин! -->
+            <button id="login_button" class="show_popup blue_btn" rel="popup1">Login</button>
+            <button id="logout" class="show_popup blue_btn" rel="popup1">Logout</button>
+        </div>
+            
+            <div id="article_list" title="Лист статей">
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">title</th>
+                            <th scope="col">author</th>
+                            <th scope="col">content</th>
+                            <th scope="col">Delete article</th>
+                            <!-- <td><input type="button" value="Delete" onclick="deleteRow(this)"/></td> -->
+                        </tr>
+                    </thead>
+                    <tbody id="articles_list_tr"></tbody>
+                </table>
+            </div>
+            
+            <div class="text-center">
+                <!-- Кнопка создания новой статьи! -->
+                <button id="input_article_button" class="show_popup blue_btn" rel="popup1">New article</button>
+            </div>
+            <!-- Диалоговое окно по созданию новой статьи! -->
+            <div id="new_article_form">
+                <form action= "" method= "POST"> 
+                    <p><input type= "text" id= "author1" name= "author" placeholder="author name"></p> 
+                    <p><input type= "text" id="title1" name= "title" placeholder="title"></p> 
+                    <p><textarea rows= "10" cols= "35" id="content1" name= "content" placeholder="content"></textarea></p> 
+                </form>
+            </div>
+            <!-- Диалоговое окно по редактированию статьи! -->
+            <div id="edit_article_form">
+                <form action= "" method= "POST">
+                    <p><input type= "hidden" id= "article_id" name= "id"></p> 
+                    <p><input type= "text" id= "author2" name= "author" placeholder="author name"></p> 
+                    <p><input type= "text" id="title2" name= "title" placeholder="title"></p> 
+                    <p><textarea rows= "10" cols= "35" id="content2" name= "content" placeholder="content"></textarea></p> 
+                </form>
+            </div>
+            <!-- Диалоговое окно login! --> 
+            <div id="login_form">
+                <form action="" method="POST">
+                    <p><b>Name:</b><input type="text" id="login" name="login" placeholder="login"></p> 
+                    <p><b>Password:</b><input type="password" id="password" name="password" placeholder="password"></p> 
+                </form>
+            </div>
+            <!-- Список юзеров (табличка). -->
+            <div id="users_list" title="Список юзеров">
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">email</th>
+                            <th scope="col">role</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user_list_tr"></tbody>
+                </table>
+            </div>
+            <div class="text-center"> 
+                <!-- Кнопка показать всех юзеров! -->
+                <button id="show_users_button" class="show_popup blue_btn" rel="popup1">Show users</button>
+            </div>
+            <!-- ЕКСПЕРЕМЕНТЫ с Модальным окном по редактированию списка юзеров! -->
+            <div id="edit_user_form">
+                <form action= "" method="POST">
+                    <p><input type= "hidden" id="user_id" name= "id"></p> 
+                    <p><input type= "text" id="name" name="name" placeholder="name"></p> 
+                    <p><input type= "text" id="email" name="email" placeholder="email"></p> 
+                    <p><input type= "text" id="role" name="role" placeholder="role"></p> 
+                </form>
+            </div>
+            <!-- Диалоговое окно, сообщающее о том, что пользователь успешно сохранен, удален, редактирован -->
+
+            <div class="info" type "hidden">
+                <span id="info">Юзер успешно удален</span>
+                <span id="info">Юзер успешно отредактирован</span>
+                <span id="info">Упс..... Произошла ощибка!</span>
+            </div>
+
+            <!--Конец ЕКСПЕРЕМЕНТам с Модальным окном по редактированию списка юзеров!   -->
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="./js/jquery-3.3.1.js"></script> 
+            <script src="./js/jquery-ui.js"></script> 
+            <script src="main.js"></script>
+            <script src="login.js"></script> 
+            <script src="users.js"></script> 
+    </body>
+</html>

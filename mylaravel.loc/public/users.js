@@ -78,9 +78,9 @@ function updateUser(id){
             email: email,
             role: role,
         },
-        success: function(data){
+        success: function(messege1/*data*/){
             console.log('success');
-            $('#info').append();
+            $('#info').append("<span>" + messege1 + "</span>");
         },
         error: function(data){
             console.log('error');

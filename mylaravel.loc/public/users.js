@@ -80,13 +80,23 @@ function updateUser(id){
         },
         success: function(messege1/*data*/){
             console.log('success');
-            $('#info').append("<span>" + messege1 + "</span>");
+            $('#info').append("<span>" + messege1 + "</span>");//выводит информацию об успешном изменении юзера
         },
         error: function(data){
             console.log('error');
+            $('#info').append("<span>" + messege + "</span>");//выводит информацию о неуспешном измениении юзера
         }
     });
 }
+    //Дикларация диалогового окна, которое показывает изменения в юзере, если таковы были
+    $('#info').dialog({
+        autoOpen:false //Изначально закрыто
+        });
+        $('#info').click(function(){
+          $('#info').dialog("open"); //По щелчку по картинки открывается 
+        });
+        
+    
 //Показать юзера
 function showUser(){
     var id = $(this).data("id");
@@ -128,6 +138,7 @@ $('#edit_user_form').dialog({
             click: function(data){
                 var id = $('#user_id').val();
                 updateUser(id);//фун-я которая сохраняет данные на сервак
+                // $('#info').append("<span>" + messege1 + "</span>");
                 $('#edit_user_form').dialog( 'close' );
             }
         },

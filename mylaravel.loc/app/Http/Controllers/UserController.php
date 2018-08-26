@@ -56,20 +56,21 @@ class UserController extends Controller
     public function editUser(Request $request){
         $id = $request->id;
         $input = $request->except('_token');
+        $name = $request->name;
         // var_dump($input);
         $user = User::find($id);
         $user->fill($input);
         //операция обновления данных!
         if($user->update()){
             $message  = 'Save successfull';
-            $message1 = 'user '.$id.' was change';
+            $message1 = 'user '.$id + $name.' was change';
 
 
             return $message1;//$message; 
             
             
         } else {
-            $message  = 'seve error'; 
+            $message  = /*'seve error'*/'does not change'; 
 
             return $message;      
         }

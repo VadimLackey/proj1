@@ -66,7 +66,7 @@ $(document).ready(function() {
         });
     }
 
-        getArticles();
+    getArticles();
         //функция которая выбирает нужную статью для удаления
     function delArticle(data){
         var id = $(this).data("id");
@@ -213,7 +213,10 @@ $(document).ready(function() {
                         success: function(data){
                             console.log('success');
                             getArticles();
+                            //выкидывает окно INFO
                             $('#new_article_form').dialog( 'close' );
+                            $('#info').append("<span style='color:blue;'>" + data + "</span>");
+                            $('#info').dialog('open');
                         },
                         
                         error: function(data){

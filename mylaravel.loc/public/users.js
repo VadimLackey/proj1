@@ -40,8 +40,6 @@ $('#users_list').dialog({
     ]
 });
 
-
-
 function delUser(id){
     $.ajax({
         type:'POST',
@@ -62,9 +60,11 @@ function delUser(id){
 }
 
 function updateUser(id){
-    var name = $('#name').val();
-    var email = $('#email').val();
-    var role = $('#role').val();
+    var id_user = id;
+    var name_user = $('#name').val();
+    var email_user = $('#email').val();
+    var role_user = $('#role').val();
+    var role_id_user = $('#user_role').val();
     $.ajax({
         type:'POST',
         headers: {
@@ -72,29 +72,39 @@ function updateUser(id){
         },
         url:'http://127.0.0.1:8000/editUser',
         data: {
-            //ассоциативный массив или json
-            id: id,
-            name: name,
-            email: email,
-            role: role,
+            //ассоциативный массив или json которые передаются переменные
+            id: id_user,
+            name: name_user,
+            email: email_user,
+            role: role_user,
+            role_id: role_id_user,
         },
-        success: function(messege1/*data*/){
-            console.log('success');
-            $('#info').append("<span>" + messege1 + "</span>");//выводит информацию об успешном изменении юзера
+        success: function(data){
+            console.log(data);
+            $('#info').append("<span style='color:blue;'>" + data + "</span>");
+            $('#info').dialog('open');
+            $('#edit_user_form').dialog('close');
         },
         error: function(data){
             console.log('error');
-            $('#info').append("<span>" + messege + "</span>");//выводит информацию о неуспешном измениении юзера
+            // $('#info').append("<span>" + messege + "</span>");//выводит информацию о неуспешном измениении юзера
         }
     });
 }
     //Дикларация диалогового окна, которое показывает изменения в юзере, если таковы были
     $('#info').dialog({
-        autoOpen:false //Изначально закрыто
-        });
-        $('#info').click(function(){
-          $('#info').dialog("open"); //По щелчку по картинки открывается 
-        });
+        autoOpen:false,
+        title: "INFO", //Изначально закрыто
+        buttons: [
+                {
+                    id: 'cancel_info',
+                    text: 'Cancel',
+                    click: function(){
+                        $('#info').dialog( 'close' );
+                    }
+                }
+        ]
+    }); 
         
     
 //Показать юзера
@@ -114,7 +124,7 @@ function showUser(){
             $('#user_id').val(data.id);
             $('#name').val(data.name);
             $('#email').val(data.email);
-            $('#role').val(data.role_id);
+            // $('#role').val(data.role_id);
             $('#edit_user_form').dialog('open');
             $('#users_list').dialog('close');
         },

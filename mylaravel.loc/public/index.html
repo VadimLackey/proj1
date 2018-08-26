@@ -89,22 +89,26 @@
                 <!-- Кнопка показать всех юзеров! -->
                 <button id="show_users_button" class="show_popup blue_btn" rel="popup1">Show users</button>
             </div>
+
             <!-- ЕКСПЕРЕМЕНТЫ с Модальным окном по редактированию списка юзеров! -->
             <div id="edit_user_form">
                 <form action= "" method="POST">
                     <p><input type= "hidden" id="user_id" name= "id"></p> 
                     <p><input type= "text" id="name" name="name" placeholder="name"></p> 
                     <p><input type= "text" id="email" name="email" placeholder="email"></p> 
-                    <p><input type= "text" id="role" name="role" placeholder="role"></p> 
+                    <!-- <p><input type= "text" id="role" name="role" placeholder="role"></p>  -->
+                    <p>
+                        <select name="role_id" id="user_role">
+                            <option value="1">Admin</option>
+                            <option value="2">Moder</option>
+                            <option selected value="3">User</option>
+                        </select>
+                    </p>
                 </form>
             </div>
-            <!-- Диалоговое окно, сообщающее о том, что пользователь успешно сохранен, удален, редактирован -->
 
-            <div id="info" type "hidden">
-                <form action="" method="GET">
-                    <span id="info1"></span>
-                </form>
-            </div>
+            <!-- Диалоговое окно для сообщений -->
+            <div id="info" type="hidden"></div>
 
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->

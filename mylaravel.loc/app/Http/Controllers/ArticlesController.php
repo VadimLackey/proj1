@@ -20,7 +20,7 @@ class ArticlesController extends Controller
          $article = new Article();
          $article->fill($input);
          if ($article->save()) {
-            $message = "Событие Сохранено!";
+            $message = "New article was created!";
 
              return $message;
          }

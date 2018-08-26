@@ -63,11 +63,9 @@ class UserController extends Controller
         //операция обновления данных!
         if($user->update()){
             $message  = 'Save successfull';
-            $message1 = 'user '.$id + $name.' was change';
-
+            $message1 = 'user: '.$id.' name: '.$name.' was change';
 
             return $message1;//$message; 
-            
             
         } else {
             $message  = /*'seve error'*/'does not change'; 

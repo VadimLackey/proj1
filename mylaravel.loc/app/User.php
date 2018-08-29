@@ -26,4 +26,8 @@ class User extends Authenticatable //Модель
     protected $hidden = [
         'password', 'remember_token',
     ];
+    // функция которая связывает таблицу user c таблицей roles
+    public function user(){
+        return $this->belongTo('App/Role', 'role_id');
+    }
 }

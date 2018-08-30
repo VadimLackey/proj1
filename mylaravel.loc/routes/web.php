@@ -42,5 +42,12 @@ Route::get('/getUsers', ['uses' => 'UserController@getUsers']);
 //Експеременто....
 
 Route::post('/getUser', ['uses' => 'UserController@getUser']);
+
 Route::post('/editUser', ['uses' => 'UserController@editUser']);
+
 Route::post('/delUser', ['uses' => 'UserController@delUser']); 
+
+//роут выводящий на стартовую страницу проверку юзера
+
+Route::get('/testUser', 'UserController@test')->name('home');
+

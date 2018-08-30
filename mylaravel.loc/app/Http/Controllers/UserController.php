@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Role;
 
 class UserController extends Controller
 {
@@ -73,5 +74,19 @@ class UserController extends Controller
             return $message;      
         }
         
+    }
+    public function test(){
+
+        $user = Auth::user();
+        $user = User::find($user->id);
+        $user_role = $user->role->name;
+        $user_role_id = $user->role_id;
+        if($user_role_id == 1){
+            echo 'Привет admin';
+        }else{
+            echo 'Вы не admin, Вы '.$user_role;      
+        }
+
+        // var_dump($user_role_id);
     }
 }

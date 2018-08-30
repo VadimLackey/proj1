@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Role;
+use DB;
 class User extends Authenticatable //Модель
 {
     use Notifiable;
@@ -27,7 +28,8 @@ class User extends Authenticatable //Модель
         'password', 'remember_token',
     ];
     // функция которая связывает таблицу user c таблицей roles
-    public function user(){
-        return $this->belongTo('App/Role', 'role_id');
+    //Почитать про методы)))
+    public function role(){
+        return $this->belongsTo('App\Role');
     }
 }

@@ -12,16 +12,20 @@ class UserController extends Controller
     public function status(Request $request){
         $user = Auth::user();
         // var_dump($user);
-        $user_role = User::find($user->id)->role_id;
+        $user = User::find($user->id);
+        $user_role = $user->role_id;
         $user_name = $user->name;
         $user_status = false;
+        $role_name = $user->role->name;
         if ($user){
             $user_status = true;
         }
+        //То что отправляется на клиент
         $data = [
             'role'=>$user_role,
             'name'=>$user_name,
-            'status'=>$user_status
+            'status'=>$user_status,
+            'role_name'=>$role_name
         ];
 
         return $data;
@@ -86,7 +90,6 @@ class UserController extends Controller
         }else{
             echo 'Вы не admin, Вы '.$user_role;      
         }
-
         // var_dump($user_role_id);
     }
 }

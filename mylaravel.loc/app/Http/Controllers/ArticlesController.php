@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Article;
+use Auth;
+use App\User;
+use App\Role;
 
 class ArticlesController extends Controller
 {
@@ -27,6 +30,23 @@ class ArticlesController extends Controller
     }
 //Принимает данные с фронта и удаляет статью с полученым айдишником.
     public function delArticle(Request $request){
+       $user = Auth::user();
+       $user = User::find($user->id);
+       $user_role = $user->role_id;
+       if($user_role == 1){
+            $id = $request->id;
+            $article_del = Article::find($id);
+            $article_del->delete();// найти в доках и изучить!
+            $message = 'article '.$id.' was delete';
+
+            return $message;
+        }else{
+            $message = 'У Вас нет прав для удаления';
+
+            return $message;
+        }
+        
+            
         //$request - это все что продается с фронтенда (это date из js)
        $id = $request->id;
        $article_del = Article::find($id);

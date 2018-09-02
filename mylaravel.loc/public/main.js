@@ -20,11 +20,12 @@ $(document).ready(function() {
                 var status =  data.status;
                 var name = data.name;
                 var role = data.role;
+                var role_name = data.role_name;
                 if (status){
                     $('#login_button').hide();
                     $('#logout').show();
                     $('#show_users_button').show();//Кнопка показывающая всех юзеров АКТИВНА!
-                    $('#hello').text('Привет, ' + name + '!');
+                    $('#hello').text('Привет, ' + name + '!' + '<br>' + 'Вы ' + role_name);
                 }
             },
             error: function(data){
@@ -120,6 +121,8 @@ $(document).ready(function() {
             }
         });
     }
+    //Декларация функции, которая идентифицирует пользователя и дает ему права согластно идентификации
+    
     function updateArticle(id){
         var author = $('#author2').val();
         var title = $('#title2').val();

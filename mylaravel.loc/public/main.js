@@ -20,7 +20,7 @@ $(document).ready(function() {
                 var status =  data.status;
                 var name = data.name;
                 var role = data.role;
-                var role_name = data.role_name;
+                var role_name = data.role_name;//то что прилетело с ф-и status
                 if (status){
                     $('#login_button').hide();
                     $('#logout').show();

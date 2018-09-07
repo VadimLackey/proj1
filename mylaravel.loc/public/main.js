@@ -40,16 +40,19 @@ $(document).ready(function() {
 ////////////////////////////////////////////////////////////
 //диалоговое окно, которое повторно спрашивает необходимость уделения юзера
 // на тот случай если затупил)))
-        $('#delete').click(function(){
-            $(this).addClass('alert');
-            $("#dialog-close").dialog({
-                modal: true,
-                buttons: {
-                'Да': function(){$('.ui-tabs-panel .alert').parents('.field').remove();$("#dialog-close").dialog('close')},
-                'Нет': function(){$('.ui-tabs-panel .alert').removeClass('alert'); $("#dialog-close").dialog('close')}
-                }
-            });
-        })
+    $('.del_article').click(function(){
+        $(this).addClass('alert');
+        $("#delete").dialog({
+            modal: true,
+            autoOpen: false,
+            buttons: {
+            'Да': function(){$('.ui-tabs-panel .alert').parents('.field').remove();
+            $("#dialog-close").dialog('close')},
+            'Нет': function(){$('.ui-tabs-panel .alert').removeClass('alert'); 
+            $("#dialog-close").dialog('close')}
+            }
+        });
+    })
 /////////////////////////////////////////////////////////////
 
     // console.log("Hello");

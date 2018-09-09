@@ -48,7 +48,9 @@ function delUser(id){
         },
         url:'http://127.0.0.1:8000/delUser',
         data: {
-            id: id
+            id: id,
+            //еще role_id нужен, для подтверждения удаления пользователя
+
         },
         success: function(data){
             console.log('success');
@@ -134,6 +136,28 @@ function showUser(){
     });
 }
 
+//Дикларация диалогового окна, которое спрашивает подтверждения действия пользователя
+$('#del_user').dialog({
+    autoOpen:false,
+    title: "Подтвердите действие :", //Изначально закрыто
+    buttons: [
+            {
+                id: 'No',
+                text: 'No',
+                click: function(){
+                    $('#del_user').dialog( 'close' );
+                }
+            },
+            {
+                id: 'yes',
+                text: 'Yes!',
+                click: function(){
+                    $('#del_user').dialog( 'close' );
+                }
+            }
+            
+    ]
+}); 
 
 //редактирование юзера!
 $('#edit_user_form').dialog({
@@ -157,7 +181,14 @@ $('#edit_user_form').dialog({
             text: 'Delete',
             click: function(data){
                 var id = $('#user_id').val();
-                delUser(id)//Функция, которая удаляет содерживое модального окна
+                var role = $('#user_role').val();
+                //Здесь мы манипулируем с данными по поводу второго диалогового окна которое переспрашивает
+                // нужно ли удалять пользователя
+                //*********************
+                $('#del_user').dialog( 'open' );
+
+                console.log(role);
+                // delUser(id)//Функция, которая удаляет содерживое модального окна
                 $('#edit_user_form').dialog( 'close' );
             }
         },

@@ -40,19 +40,56 @@ $(document).ready(function() {
 ////////////////////////////////////////////////////////////
 //диалоговое окно, которое повторно спрашивает необходимость уделения юзера
 // на тот случай если затупил)))
-    $('.del_article').click(function(){
-        $(this).addClass('alert');
-        $("#delete").dialog({
-            modal: true,
-            autoOpen: false,
-            buttons: {
-            'Да': function(){$('.ui-tabs-panel .alert').parents('.field').remove();
-            $("#dialog-close").dialog('close')},
-            'Нет': function(){$('.ui-tabs-panel .alert').removeClass('alert'); 
-            $("#dialog-close").dialog('close')}
-            }
-        });
-    })
+    // $('.btn btn-default').click(function(){
+    //     $("#delete").dialog({
+    //         modal: true,
+    //         autoOpen: false,
+    //         width: 400,
+            
+    //         buttons: [
+    //             {
+    //                 id: 'del_user',
+    //                 text: 'Delete',
+    //                 click: function(){
+    //                     var title = $('#title1').val();
+    //                     var content = $('#content1');
+    //                     var author = $('#author1');
+    //                     $.ajax({
+    //                         type:'POST',
+    //                         headers: {
+    //                             'X-XSRF-TOKEN': getCookie("XSRF-TOKEN"),
+    //                         },
+    //                         url:'http://127.0.0.1:8000/addArticle',
+    //                         data: {
+    //                             title: title,
+    //                             content: content.val(),
+    //                             author: author.val()
+    //                         },
+    //                         success: function(data){
+    //                             console.log('success');
+    //                             getArticles();
+    //                             //выкидывает окно INFO
+    //                             $('#new_article_form').dialog( 'close' );
+    //                             $('#info').append("<span style='color:blue;'>" + data + "</span>");
+    //                             $('#info').dialog('open');
+    //                         },
+                            
+    //                         error: function(data){
+    //                             console.log('error');
+    //                         }
+    //                     });
+    //                 }
+    //             },
+    //             {
+    //                 id: 'cancel_new_article',
+    //                 text: 'Cancel',
+    //                 click: function(){
+    //                     $('#new_article_form').dialog( 'close' );
+    //                 }
+    //             }
+    //         ]
+    //     });
+    // })
 /////////////////////////////////////////////////////////////
 
     // console.log("Hello");

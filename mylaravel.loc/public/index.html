@@ -110,8 +110,35 @@
             <!-- Диалоговое окно для сообщений -->
             <div id="info" type="hidden"></div>
 
+            <!-- Модальное окно для двухуровневого удаления -->
+            <div id="del_user" type="hidden"></div>
+
+
             <!-- Диалоговое окно для 2- уровневого удаления -->
-            <div id="delete" type="hidden"></div>
+            <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            ...
+                        </div>
+                        <div class="modal-body">
+                            <p>Text</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-danger btn-ok">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <script>
+                $('#confirm-delete').on('#confirm-delete', function(data) {
+                $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('role_id'));
+                });
+            </script> -->
+
+            <!-- конец эксперементам с 2-х уровневым удалениям -->
 
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->

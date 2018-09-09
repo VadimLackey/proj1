@@ -42,10 +42,18 @@ class UserController extends Controller
     //удаляет юзера с нужным айдишником
     public function delUser(Request $request){
         //$request - это все что продается с фронтенда (это date из js)
-       $id = $request->id;
-       $user_del = User::find($id);
-       $user_del->delete();// найти в доках и изучить!
-       $message = 'user '.$id.' was delete';
+        $user = Auth::user();
+        $role = $user->role_id;
+        // var_dump($role);
+        // die();
+        if($role == 1){
+            $id = $request->id;
+            $user_del = User::find($id);
+            $user_del->delete();// найти в доках и изучить!
+            $message = 'user '.$id.' was delete';
+        }else{
+            $message = 'Вы не admin!';
+        }
        
        return $message;
     }

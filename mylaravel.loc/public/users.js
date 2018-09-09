@@ -54,6 +54,9 @@ function delUser(id){
         },
         success: function(data){
             console.log('success');
+            $('#info').append("<span style='color:blue;'>" + data + "</span>");
+            $('#info').dialog('open');
+            // console.log(data);
         },
         error: function(data){
             console.log('error');
@@ -152,6 +155,9 @@ $('#del_user').dialog({
                 id: 'yes',
                 text: 'Yes!',
                 click: function(){
+                    var id = $('#del_id').data('id'); 
+                    delUser(id);
+                    // console.log(id);
                     $('#del_user').dialog( 'close' );
                 }
             }
@@ -181,13 +187,13 @@ $('#edit_user_form').dialog({
             text: 'Delete',
             click: function(data){
                 var id = $('#user_id').val();
-                var role = $('#user_role').val();
                 //Здесь мы манипулируем с данными по поводу второго диалогового окна которое переспрашивает
                 // нужно ли удалять пользователя
                 //*********************
+                $('#del_user').append('<p id="del_id" type="hidden" data-id="' + id + '"></p>');
                 $('#del_user').dialog( 'open' );
 
-                console.log(role);
+                // console.log(role);
                 // delUser(id)//Функция, которая удаляет содерживое модального окна
                 $('#edit_user_form').dialog( 'close' );
             }

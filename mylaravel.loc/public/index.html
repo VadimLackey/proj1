@@ -86,6 +86,7 @@
                 </table>
             </div>
             <div class="text-center"> 
+
                 <!-- Кнопка показать всех юзеров! -->
                 <button id="show_users_button" class="show_popup blue_btn" rel="popup1">Show users</button>
             </div>
@@ -113,35 +114,33 @@
             <!-- Модальное окно для двухуровневого удаления -->
             <div id="del_user" type="hidden"></div>
 
+                <!-- Експеременты с списком всех статей юзера -->
 
-            <!-- Диалоговое окно для 2- уровневого удаления -->
-            <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            ...
-                        </div>
-                        <div class="modal-body">
-                            <p>Text</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-danger btn-ok">Delete</a>
-                        </div>
-                    </div>
+            <!-- /////////////////////////////////// -->
+
+            <!-- Модальное окно всех статей юзера -->
+            <div id="user_articles" type="hidden"></div>
+
+            <!-- //////////////////////////////////////// -->
+
+            <!-- Таблица всех статей юзера -->
+            <div id="users_article_list" title="Список статей юзера">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">articles</th>
+                            </tr>
+                        </thead>
+                        <tbody id="articles_user_list_tr"></tbody>
+                    </table>
                 </div>
-            </div>
-
-            <!-- <script>
-                $('#confirm-delete').on('#confirm-delete', function(data) {
-                $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('role_id'));
-                });
-            </script> -->
-
-            <!-- конец эксперементам с 2-х уровневым удалениям -->
-
+                <!-- ///////////////////////////////////////////////////////////// -->
+            
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="./js/jquery-3.3.1.js"></script> 
             <script src="./js/jquery-ui.js"></script> 

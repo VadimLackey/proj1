@@ -165,6 +165,7 @@ $('#del_user').dialog({
     ]
 }); 
 
+
 //редактирование юзера!
 $('#edit_user_form').dialog({
     autoOpen: false,
@@ -206,4 +207,42 @@ $('#edit_user_form').dialog({
             }
         }
     ]
+});
+
+//Дикларация диалогового окна, которое показывает все статьи юзера
+$('#users_article_list').dialog({
+    autoOpen:false,
+    title: "Все статьи юзера :", //Изначально закрыто
+    width: 800,
+    height: 600,
+    buttons: [
+            {
+                id: 'No',
+                text: 'No',
+                click: function(){
+                    // $('#del_user').dialog( 'close' );
+                }
+            },
+            {
+                id: 'yes',
+                text: 'Yes!',
+                click: function(){
+                    // var id = $('#del_id').data('id'); 
+                    // delUser(id);
+                    // // console.log(id);
+                    // $('#user_articles').dialog( 'close' );
+                }
+            }
+            
+    ]
+}); 
+
+//Диалоговое окно в котором появляются все статьи юзера
+$('#author2').dialog({
+    autoOpen: false,
+    width: 500,
+    title: 'Статьи юзера',
+    click: function(){
+        $('user_articles').dialog('open');
+    }
 });

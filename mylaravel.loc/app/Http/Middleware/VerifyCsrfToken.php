@@ -15,7 +15,8 @@ class VerifyCsrfToken extends Middleware
         '/addArticle', //Прочесть в документации! Для чего нужен этот файл и зачем эти исключения!!!
         // '/delArticle', //включен токен 
         // '/getArticle',
-        '/editArticle'
+        '/editArticle',
+        'getUserArticles{id}'   
     ];
 
 }

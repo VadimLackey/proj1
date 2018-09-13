@@ -12,7 +12,7 @@ class UserController extends Controller
     public function status(Request $request){
         $user = Auth::user();
         // var_dump($user);
-        $user = User::find($user->id);
+        $user = User::find($user->id);-
         $user_role = $user->role_id;
         $user_name = $user->name;
         $user_status = false;

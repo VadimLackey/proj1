@@ -32,4 +32,8 @@ class User extends Authenticatable //Модель
     public function role(){
         return $this->belongsTo('App\Role');
     }
+
+    public function articles(){/// ЭТО АРХИВАЖНО ПИСАТЬ ВО МНОЖЕСТВЕННОМ ЧИСЛЕ!! (это если hasMany)
+        return $this->hasMany('App\Article');
+    }
 }

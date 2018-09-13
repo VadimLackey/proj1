@@ -80,6 +80,13 @@ class ArticlesController extends Controller
         }
         
     }
-
+    
+    public function getUserArticles(Request $request){
+        $id = $request->id;
+        $user = User::find($id);
+        $articles = $user->articles;
+        
+        return $articles;
+    }
     
 }

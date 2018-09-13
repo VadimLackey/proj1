@@ -51,3 +51,4 @@ Route::post('/delUser', ['uses' => 'UserController@delUser']);
 
 Route::get('/testUser', 'UserController@test')->name('home');
 
+Route::get('/getUserArticles', 'ArticlesController@getUserArticles');

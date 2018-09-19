@@ -13,20 +13,26 @@ class ArticlesController extends Controller
 {
     public function getArticles(){
         $articles = Article::all();
-
+        foreach($articles as $article){
+            if($article->author == NULL){
+                $article->author = 'Default author!';
+            }
+        }
         return $articles;
     }
 
     public function addArticle(Request $request){
 
         $input = $request->except('_token');
-         $article = new Article();
-         $article->fill($input);
-         if ($article->save()) {
+        $article = new Article();
+        $user = Auth::user();
+        $article->fill($input);
+        $article->author = $user->name;
+        if ($article->save()) {
             $message = "New article was created!";
 
-             return $message;
-         }
+            return $message;
+        }
     }
 //Принимает данные с фронта и удаляет статью с полученым айдишником.
     public function delArticle(Request $request){

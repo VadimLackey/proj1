@@ -50,7 +50,7 @@ $(document).ready(function() {
     
                 data.forEach( function(el){
                     $('#articles_list_tr').append('<tr class="del table-warning show_event"><td>' 
-                    + el.id + '</td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">'+ el.title + '</a></b></td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">' /*+ el.author + '</a></b></td><td>'*/ +
+                    + el.id + '</td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">'+ el.title + '</a></b></td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">' + el.author + '</a></b></td><td>' +
                     el.content + '</td><td><button class = "del_article" data-id = "' + el.id + '">Delete</button></td></tr>')
                 });
                 $(".del_article").on("click",delArticle);
@@ -109,7 +109,7 @@ $(document).ready(function() {
             success: function(data){
                 console.log('success');
                 $('#article_id').val(data.id);
-                // $('#author2').val(data.author);
+                $('#author2').val(data.author);
                 $('#title2').val(data.title);
                 $('#content2').val(data.content);
                 $('#edit_article_form').dialog('open');
@@ -122,7 +122,7 @@ $(document).ready(function() {
     //Декларация функции, которая идентифицирует пользователя и дает ему права согластно идентификации
     
     function updateArticle(id){
-        // var author = $('#author2').val();
+        var author = $('#author2').val();
         var title = $('#title2').val();
         var content = $('#content2').val();
         $.ajax({
@@ -148,7 +148,7 @@ $(document).ready(function() {
     $('#button_add_article').click(function(){
         var title = $('#title');
         var content = $('#content');
-        // var author = $('#author');
+        var author = $('#author');
         $.ajax({
             type:'POST',
             headers: {
@@ -169,10 +169,10 @@ $(document).ready(function() {
         });
     });
     
-    // $('#button_add_article').click(function(){
-    //     var author = $('#author').val();
-    //     console.log(author);
-    // });
+    $('#button_add_article').click(function(){
+        var author = $('#author').val();
+        console.log(author);
+    });
 
     $('#button_add_article').click(function(){
         var title = $('#title').val();
@@ -199,7 +199,7 @@ $(document).ready(function() {
                 click: function(){
                     var title = $('#title1').val();
                     var content = $('#content1');
-                    // var author = $('#author1');
+                    var author = $('#author1');
                     $.ajax({
                         type:'POST',
                         headers: {
@@ -209,7 +209,7 @@ $(document).ready(function() {
                         data: {
                             title: title,
                             content: content.val(),
-                            // author: author.val()
+                            author: author.val()
                         },
                         success: function(data){
                             console.log('success');

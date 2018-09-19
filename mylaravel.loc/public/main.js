@@ -47,7 +47,7 @@ $(document).ready(function() {
             success: function(data){
                 // console.log(data);
                 $('tr.del').remove();
-    
+                
                 data.forEach( function(el){
                     $('#articles_list_tr').append('<tr class="del table-warning show_event"><td>' 
                     + el.id + '</td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">'+ el.title + '</a></b></td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">' + el.author + '</a></b></td><td>' +

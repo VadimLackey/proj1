@@ -84,7 +84,6 @@ class ArticlesController extends Controller
 
             return $message;      
         }
-        
     }
     
     public function getUserArticles(Request $request){

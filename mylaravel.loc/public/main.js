@@ -283,8 +283,11 @@ $(document).ready(function() {
     });
 
     // Декларация функции показать авторов
-    function showAuthors()
+    //ПЕРЕДЕЛАТЬ!!!!
+    function showAuthors(id)
     {
+        // var author = $('#author2').val();
+
         $.ajax({
             type:'GET',
             headers: {
@@ -293,22 +296,52 @@ $(document).ready(function() {
             url:'http://127.0.0.1:8000/getAuthors',
             data: {
                 id: id,
-                title: title,
-                content: content,
                 author: author
             },
+            
             success: function(data){
                 console.log('success');
+                console.log(data);
             },
             error: function(data){
                 console.log('error');
             }
         });
         
-        forEach
+        // forEach
     }
-    
+
+    //  $('#show_authors_button').dialog({
+    //     autoOpen: false,
+    //     width: 800,
+    //     title: 'Users',
+        
+    // });
 });
 
+///////////////////////////Балванка
+// function getArticles(){
+//     $.ajax({       
+//         type: "GET",
+//         url: 'http://127.0.0.1:8000/getArticles',
+//         success: function(data){
+//             // console.log(data);
+//             $('tr.del').remove();
+            
+//             data.forEach( function(el){
+//                 $('#articles_list_tr').append('<tr class="del table-warning show_event"><td>' 
+//                 + el.id + '</td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">'+ el.title + '</a></b></td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">' + el.author + '</a></b></td><td>' +
+//                 el.content + '</td><td><button class = "del_article" data-id = "' + el.id + '">Delete</button></td></tr>')
+//             });
+//             $(".del_article").on("click",delArticle);
+//             $(".edit_article").on("click",editArticle);
 
+//             //Вызывается функция, которая при нажатии на кнопку "Удалить" delArticle
+//         },
+//         error: function(data){
+//             console.log("error");
+//             // console.log(data);
+//         }
+//     });
+// }
     

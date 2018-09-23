@@ -21,12 +21,19 @@ $(document).ready(function() {
                 var name = data.name;
                 var role = data.role;
                 var role_name = data.role_name;//то что прилетело с ф-и status
+                if(role==1){
+                    $('#show_authors_button').show();
+                }else{
+                    $('#show_authors_button').hide();
+                }
                 if (status){
                     $('#login_button').hide();
                     $('#logout').show();
+                    // $('#show_authors_button').hide();
                     $('#show_users_button').show();//Кнопка показывающая всех юзеров АКТИВНА!
                     $('#hello').text('Привет, ' + name + '!' + '<br>' + 'Вы ' + role_name);
                 }
+                
             },
             error: function(data){
                 console.log("error");
@@ -274,6 +281,32 @@ $(document).ready(function() {
         
     });
 
+    // Декларация функции показать авторов
+    function showAuthors()
+    {
+        $.ajax({
+            type:'GET',
+            headers: {
+                'X-XSRF-TOKEN': getCookie("XSRF-TOKEN"),
+            },
+            url:'http://127.0.0.1:8000/getAuthors',
+            data: {
+                id: id,
+                title: title,
+                content: content,
+                author: author
+            },
+            success: function(data){
+                console.log('success');
+            },
+            error: function(data){
+                console.log('error');
+            }
+        });
+        
+        forEach
+    }
+    
 });
 
 

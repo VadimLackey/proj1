@@ -93,5 +93,4 @@ class ArticlesController extends Controller
         
         return $articles;
     }
-    
 }

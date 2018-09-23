@@ -100,4 +100,10 @@ class UserController extends Controller
         }
         // var_dump($user_role_id);
     }
+
+    // функция, принимающая с фронтенда данные с ф-и showAuthors
+    function getAuthors()
+    {
+        
+    }
 }

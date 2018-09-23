@@ -102,7 +102,7 @@ function logout(){
             $('#logout').hide();
             $('#show_users_button').hide();//Кнопка которая показывает всех юзеров НЕ АКТИВНА
             $('#hello').text('');
-
+            status();
         },
         error: function(data){
             console.log("error");

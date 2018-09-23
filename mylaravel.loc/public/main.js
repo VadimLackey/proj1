@@ -223,7 +223,8 @@ $(document).ready(function() {
                             getArticles();
                             //выкидывает окно INFO
                             $('#new_article_form').dialog( 'close' );
-                            $('#info').append("<span style='color:blue;'>" + data + "</span>");
+                            $('.span-del').remove();
+                            $('#info').append("<span class='span-del' style='color:blue;'>" + data + "</span>");
                             $('#info').dialog('open');
                         },
                         

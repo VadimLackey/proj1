@@ -52,3 +52,5 @@ Route::post('/delUser', ['uses' => 'UserController@delUser']);
 Route::get('/testUser', 'UserController@test')->name('home');
 
 Route::get('/getUserArticles', 'ArticlesController@getUserArticles');
+
+Route::get('/getAuthors', 'UserController@getAuthors'); //Подключение фу-ции, которая отдает всех юзеров

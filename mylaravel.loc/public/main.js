@@ -57,8 +57,11 @@ $(document).ready(function() {
                 
                 data.forEach( function(el){
                     $('#articles_list_tr').append('<tr class="del table-warning show_event"><td>' 
-                    + el.id + '</td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">'+ el.title + '</a></b></td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">' + el.author + '</a></b></td><td>' +
-                    el.content + '</td><td><button class = "del_article" data-id = "' + el.id + '">Delete</button></td></tr>')
+                    + el.id + '</td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">'+ el.title 
+                    + '</a></b></td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">' 
+                    + el.author + '</a></b></td><td>' 
+                    + el.content + '</td><td><button class = "del_article" data-id = "' + el.id 
+                    + '">Delete</button></td></tr>')
                 });
                 $(".del_article").on("click",delArticle);
                 $(".edit_article").on("click",editArticle);
@@ -284,64 +287,40 @@ $(document).ready(function() {
 
     // Декларация функции показать авторов
     //ПЕРЕДЕЛАТЬ!!!!
-    function showAuthors(id)
-    {
-        // var author = $('#author2').val();
-
-        $.ajax({
-            type:'GET',
-            headers: {
-                'X-XSRF-TOKEN': getCookie("XSRF-TOKEN"),
-            },
-            url:'http://127.0.0.1:8000/getAuthors',
-            data: {
-                id: id,
-                author: author
-            },
-            
-            success: function(data){
-                console.log('success');
-                console.log(data);
-            },
-            error: function(data){
-                console.log('error');
-            }
-        });
-        
-        // forEach
-    }
-
     //  $('#show_authors_button').dialog({
     //     autoOpen: false,
     //     width: 800,
     //     title: 'Users',
-        
     // });
+    //Тут нормально продекларирована функция
+    function getAuthors(){
+
+        $.ajax({       
+            type: "GET",
+            url: 'http://127.0.0.1:8000/getAuthors',
+            success: function(data){
+                // console.log(data);
+                $('tr.table').remove();
+                
+                data.forEach(function(el)
+                    {
+                        $('#author_list_tr').append('<tr class="table author_show_event"><td>' 
+                        + el.id + '</td><td><b><a href="#" class = "author_id" data-id = "' + el.id + '">' 
+                        + el.author + '</a></b></td></tr>')
+                    }
+                );
+                // $(".del_article").on("click",delArticle);
+                // $(".edit_article").on("click",editArticle);
+    
+                //Вызывается функция, которая при нажатии на кнопку "Удалить" delArticle
+            },
+            error: function(data){
+                console.log("error");
+                // console.log(data);
+             }
+        });
+    }
+
+    getAuthors();
 });
-
-///////////////////////////Балванка
-// function getArticles(){
-//     $.ajax({       
-//         type: "GET",
-//         url: 'http://127.0.0.1:8000/getArticles',
-//         success: function(data){
-//             // console.log(data);
-//             $('tr.del').remove();
-            
-//             data.forEach( function(el){
-//                 $('#articles_list_tr').append('<tr class="del table-warning show_event"><td>' 
-//                 + el.id + '</td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">'+ el.title + '</a></b></td><td><b><a href="#" class = "edit_article" data-id = "' + el.id + '">' + el.author + '</a></b></td><td>' +
-//                 el.content + '</td><td><button class = "del_article" data-id = "' + el.id + '">Delete</button></td></tr>')
-//             });
-//             $(".del_article").on("click",delArticle);
-//             $(".edit_article").on("click",editArticle);
-
-//             //Вызывается функция, которая при нажатии на кнопку "Удалить" delArticle
-//         },
-//         error: function(data){
-//             console.log("error");
-//             // console.log(data);
-//         }
-//     });
-// }
     

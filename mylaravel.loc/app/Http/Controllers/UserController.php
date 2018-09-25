@@ -104,6 +104,12 @@ class UserController extends Controller
     // функция, принимающая с фронтенда данные с ф-и showAuthors
     function getAuthors()
     {
-        
+        $users = User::all();
+        foreach($users as $user){
+            if($users->user == NULL){
+                $users->user = 'Default author!';
+            }
+        }
+        return $users;
     }
 }

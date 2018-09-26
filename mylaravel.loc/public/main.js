@@ -287,32 +287,23 @@ $(document).ready(function() {
 
     // Декларация функции показать авторов
     //ПЕРЕДЕЛАТЬ!!!!
-    //  $('#show_authors_button').dialog({
-    //     autoOpen: false,
-    //     width: 800,
-    //     title: 'Users',
-    // });
+    
     //Тут нормально продекларирована функция
     function getAuthors(){
-
         $.ajax({       
             type: "GET",
             url: 'http://127.0.0.1:8000/getAuthors',
             success: function(data){
-                // console.log(data);
-                $('tr.table').remove();
-                
-                data.forEach(function(el)
-                    {
-                        $('#author_list_tr').append('<tr class="table author_show_event"><td>' 
-                        + el.id + '</td><td><b><a href="#" class = "author_id" data-id = "' + el.id + '">' 
-                        + el.author + '</a></b></td></tr>')
-                    }
-                );
-                // $(".del_article").on("click",delArticle);
-                // $(".edit_article").on("click",editArticle);
+                console.log(data);
+                // $('tr.table').remove();
+                // data.forEach(function(el)
+                //     {
+                //         $('#author_list_tr').append('<tr class="table author_show_event"><td>' 
+                //         + el.id + '</td><td><b><a href="#" class = "author_id" data-id = "' + el.id + '">' 
+                //         + el.author + '</a></b></td></tr>')
+                //     }
+                // );
     
-                //Вызывается функция, которая при нажатии на кнопку "Удалить" delArticle
             },
             error: function(data){
                 console.log("error");
@@ -320,7 +311,8 @@ $(document).ready(function() {
              }
         });
     }
-
-    getAuthors();
+    $('#show_authors_button').click(function(){
+        getAuthors();
+    })
 });
     

@@ -104,12 +104,17 @@ class UserController extends Controller
     // функция, принимающая с фронтенда данные с ф-и showAuthors
     function getAuthors()
     {
+        //Работа с массивами!
         $users = User::all();
+        //Знать как "Отче наш"
+        $users_arr = [];
+        $i = 0;
         foreach($users as $user){
-            if($users->user == NULL){
-                $users->user = 'Default author!';
-            }
+            // $users_arr[$user['id']] = $user['name'];
+            $users_arr [$i] = [ 'id' => $user['id'], 'name' => $user['name']];
+            $i++;
         }
-        return $users;
+
+        return $users_arr;
     }
 }

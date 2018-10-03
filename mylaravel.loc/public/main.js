@@ -289,21 +289,24 @@ $(document).ready(function() {
     //ПЕРЕДЕЛАТЬ!!!!
     
     //Тут нормально продекларирована функция
-//Дикларация Диалогового окна: показать всех авторов
-$('#author_list').dialog({
-    autoOpen: false, 
-    height: 600, 
-    width: 550,
-    buttons: [
-        {
-            id: 'cancel_author_list',
-            text: 'Cancel',
-            click: function(){
-                $('#author_list').dialog( 'close' );
+    //Дикларация Диалогового окна: показать всех авторов
+    $('#author_list').dialog({
+        autoOpen: false, 
+        height: 600, 
+        width: 550,
+        buttons: [
+            {
+                id: 'cancel_author_list',
+                text: 'Cancel',
+                click: function()
+                {
+                    $('#author_list').dialog( 'close' );
+                }
             }
-        }
-    ]
-});
+        ]
+    });
+
+    //Функция, которая забирает из сервера id и name (чтоб показать потом всех авторов статей)
 
     function getAuthors(){
         //
@@ -326,7 +329,7 @@ $('#author_list').dialog({
                     }
                 );
                 $('#author_list').dialog( 'open' );
-                $(".author_id").on("click",showArticlesAuthor);
+                $(".author_id").on("click", showArticlesAuthor);
     
             },
             error: function(data){
@@ -340,10 +343,10 @@ $('#author_list').dialog({
     // все статьи которые написал автор, если таких нет то 
     // выскочит окно уведомлений и сообщит что у автора статей пока нет
 
-    function showArticlesAuthor(){
+    function showArticlesAuthor(data){
         var id = $(this).data("id");
         $.ajax({
-            type:'POST',
+            type:'GET',
             headers: {
                 'X-XSRF-TOKEN': getCookie("XSRF-TOKEN"),
             },
@@ -352,75 +355,23 @@ $('#author_list').dialog({
                 id: id,
             },
             success: function(data){
+                
                 console.log('success');
                 // $('#user_id').val(data.id);
-                // $('#name').val(data.name);
-                // $('#email').val(data.email);
-                // // $('#role').val(data.role_id);
                 // $('#edit_user_form').dialog('open');// задекларировать форму которая показывает все статьи автора, что он создал
-                $('#author_list').dialog('close');//закрывает предыдущее окошко
+                // $('#author_list').dialog('close');//закрывает предыдущее окошко
             },
             error: function(data){
                 console.log('error');
             }
         });
     }
-
+    // Функция, которая выводит принажатии на кнопку "Показать авторов" всех авторов
     $('#show_authors_button').click(function(){
         getAuthors();
     })
 });
     
-//Смавпувать
 
-// function showUser(){
-//     var id = $(this).data("id");
-//     $.ajax({
-//         type:'POST',
-//         headers: {
-//             'X-XSRF-TOKEN': getCookie("XSRF-TOKEN"),
-//         },
-//         url:'http://127.0.0.1:8000/getUser',
-//         data: {
-//             id: id,
-//         },
-//         success: function(data){
-//             console.log('success');
-//             $('#user_id').val(data.id);
-//             $('#name').val(data.name);
-//             $('#email').val(data.email);
-//             // $('#role').val(data.role_id);
-//             $('#edit_user_form').dialog('open');
-//             $('#users_list').dialog('close');
-//         },
-//         error: function(data){
-//             console.log('error');
-//         }
-//     });
-// }
-
-////////// Взаимосвязанные функции...
-// function getUsers(){
-//     $.ajax({       
-//         type: "GET",
-//         url: 'http://127.0.0.1:8000/getUsers',
-//         success: function(data){
-//             console.log(data);
-//             // console.log(data[2].email);!!!!!! это чудное сочетание значков дает возможность достучатся ДО обьекта в массиве + к его свойству(в данном случае email)
-
-//             $('.user_tr_del').remove(); //найди таблицу с таким классом и удали ее
-//             data.forEach( function(el){
-//                 $('#user_list_tr').append('<tr class="user_tr_del"><td>' + el.id + '</td><td><b><a href="#" class = "edit_user" data-id =  "' + el.id + '">' + el.name
-//                 + '</a></b></td><td>' + el.email + '</td><td>' + el.role_id + '</td></tr>');
-//             });
-//             $('#users_list').dialog( 'open' );
-//             $(".edit_user").on("click",showUser);
-//         },
-//         error: function(data){
-//             console.log("error");
-//             // console.log(data);
-//         }
-//     });
-// }
 
 

@@ -53,4 +53,7 @@ Route::get('/testUser', 'UserController@test')->name('home');
 
 Route::get('/getUserArticles', 'ArticlesController@getUserArticles');
 
+
 Route::get('/getAuthors', 'UserController@getAuthors'); //Подключение фу-ции, которая отдает всех юзеров
+
+Route::get('/getArticlesAuthor', 'UserController@getArticlesAuthor'); //Подключение фу-ции, которая отдает все статьи юзера

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Article; //Действует пространство имен контроллера статей
 use App\User;
 use App\Role;
 
@@ -36,8 +37,6 @@ class UserController extends Controller
 
         return $users;
     }
-
-
 
     //удаляет юзера с нужным айдишником
     public function delUser(Request $request){
@@ -116,5 +115,14 @@ class UserController extends Controller
         }
 
         return $users_arr;
+    }
+    //Функция. которая находит статьи юзера и возвращает эти статьи в массиве
+    public function getArticlesAuthor(Request $request)
+    {
+        $id = $request->id;
+        $user = User::find($id);
+        $articles = $user->articles;
+            
+        return $articles;
     }
 }

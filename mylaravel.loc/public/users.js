@@ -10,7 +10,7 @@ function getUsers(){
             console.log(data);
             // console.log(data[2].email);!!!!!! это чудное сочетание значков дает возможность достучатся ДО обьекта в массиве + к его свойству(в данном случае email)
 
-            $('.user_tr_del').remove();
+            $('.user_tr_del').remove(); //найди таблицу с таким классом и удали ее
             data.forEach( function(el){
                 $('#user_list_tr').append('<tr class="user_tr_del"><td>' + el.id + '</td><td><b><a href="#" class = "edit_user" data-id =  "' + el.id + '">' + el.name
                 + '</a></b></td><td>' + el.email + '</td><td>' + el.role_id + '</td></tr>');
@@ -24,7 +24,7 @@ function getUsers(){
         }
     });
 }
-//Обьявление диалогового окна отрисовывает юзеров в диалоговом окошке
+//Декларация диалогового окна отрисовывает юзеров в диалоговом окошке
 $('#users_list').dialog({
     autoOpen: false, 
     height: 600, 
